@@ -2,8 +2,8 @@ package com.example.shoppinglisttestinginandroid.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.shoppinglisttestinginandroid.constant.Constants.BASE_URL
-import com.example.shoppinglisttestinginandroid.constant.Constants.DATABASE_NAME
+import com.example.shoppinglisttestinginandroid.util.Constants.BASE_URL
+import com.example.shoppinglisttestinginandroid.util.Constants.DATABASE_NAME
 import com.example.shoppinglisttestinginandroid.data.local.ShoppingItemDatabase
 import com.example.shoppinglisttestinginandroid.data.remote.PixabayAPI
 import dagger.Module

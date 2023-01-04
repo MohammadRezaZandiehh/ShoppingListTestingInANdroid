@@ -1,4 +1,4 @@
-package com.example.shoppinglisttestinginandroid.constant
+package com.example.shoppinglisttestinginandroid.util
 
 object Constants {
 
