@@ -2,10 +2,13 @@ package com.example.shoppinglisttestinginandroid.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.shoppinglisttestinginandroid.data.local.ShoppingDao
 import com.example.shoppinglisttestinginandroid.util.Constants.BASE_URL
 import com.example.shoppinglisttestinginandroid.util.Constants.DATABASE_NAME
 import com.example.shoppinglisttestinginandroid.data.local.ShoppingItemDatabase
 import com.example.shoppinglisttestinginandroid.data.remote.PixabayAPI
+import com.example.shoppinglisttestinginandroid.repository.DefaultShoppingRepository
+import com.example.shoppinglisttestinginandroid.repository.ShoppingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +27,13 @@ object AppModule {
     fun provideShoppingItemDatabase(
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(context, ShoppingItemDatabase::class.java, DATABASE_NAME).build()
+
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(                                                           // if we didn't want to send repository to viewModel we don't need to write this function.
+        dao: ShoppingDao,                                                                           //because in repository class we pass "dao and api" in constructor and dagger knew it and handle it bu itself.
+        api: PixabayAPI
+    ) = DefaultShoppingRepository(dao, api) as ShoppingRepository
 
     @Singleton
     @Provides
